@@ -60,8 +60,8 @@ function getHumanChoice() {                                                     
 
 
 
-let humanScore = 0;                             // Declaring humanScore and computerScore variables to keep track of
-let computerScore = 0;                          // the players' scores
+/* let humanScore = 0;                              // Declaring humanScore and computerScore variables to keep track of
+let computerScore = 0;                              // the players' scores
 
 
 
@@ -70,17 +70,74 @@ function playRound(humanChoice, computerChoice) {                               
     if (computerChoice === "rock" && humanChoice === "scissors" ||                                                  // It gathers both the humanChoice and computerChoice and compares them.
         computerChoice === "scissors" && humanChoice === "paper" ||                                                 // It then declares which player wins and increments their score by 1.
         computerChoice === "paper" && humanChoice === "rock") {                                                     // If the round results in a tie, the scores are not incremented.
-        computerScore++;
+        computerScore = computerScore + 1;
         console.log("The computer wins, " + `${computerChoice}` + " beats " + `${humanChoice}` + "!");
     } else if (humanChoice === "rock" && computerChoice === "scissors" ||
         humanChoice === "scissors" && computerChoice === "paper" ||
         humanChoice === "paper" && computerChoice === "rock") {
-        humanScore++;
+        humanScore = humanScore + 1;
         console.log("You win, " + `${humanChoice}` + " beats " + `${computerChoice}` + "!");
     } else {
         console.log("It's a tie, " + `${humanChoice}` + " equals " + `${computerChoice}` + "!");
     }
+} */
+
+
+
+
+function playGame() {                                                                                               // I created the playGame function and moved the score variables as well as
+    let humanScore = 0;                                                                                             // the playRound function inside of it.
+    let computerScore = 0;
+    function playRound(humanChoice, computerChoice) {
+        if (computerChoice === "rock" && humanChoice === "scissors" ||                                                  
+            computerChoice === "scissors" && humanChoice === "paper" ||                                                 
+            computerChoice === "paper" && humanChoice === "rock") {                                                     
+            computerScore = computerScore + 1;
+            console.log("The computer wins, " + `${computerChoice}` + " beats " + `${humanChoice}` + "!");
+        } else if (humanChoice === "rock" && computerChoice === "scissors" ||
+            humanChoice === "scissors" && computerChoice === "paper" ||
+            humanChoice === "paper" && computerChoice === "rock") {
+            humanScore = humanScore + 1;
+            console.log("You win, " + `${humanChoice}` + " beats " + `${computerChoice}` + "!");
+        } else {
+            console.log("It's a tie, " + `${humanChoice}` + " equals " + `${computerChoice}` + "!");
+        }
+    };
+
+    console.log("Round 1");                                                                                         // The function calls the playRound function 5 times, logging the winner and
+    playRound(getHumanChoice(), getComputerChoice());                                                               // the score in the console
+    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+
+    console.log("Round 2");
+    playRound(getHumanChoice(), getComputerChoice());
+    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+    
+    console.log("Round 3");
+    playRound(getHumanChoice(), getComputerChoice());
+    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+
+    console.log("Round 4");
+    playRound(getHumanChoice(), getComputerChoice());
+    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+
+    console.log("Round 5");
+    playRound(getHumanChoice(), getComputerChoice());
+    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+
+    if (humanScore > computerScore) {                                                                                                       // After the last round has been played, the function checks which
+        console.log("You win the game!\nFinal Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);                   // player has the highest score to declare the winner or if the game results
+    } else if (computerScore > humanScore) {                                                                                                // in a tie, then it prints the final score
+        console.log("The computer wins the game!\nFinal Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+    } else {
+        console.log("It's a tie!\nFinal Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+    };
+
+    let playAgain = prompt("Do you want to play again? Y/N").toUpperCase();                                                                 // The function asks the user if they want to play again
+    if (playAgain === "Y") {
+        return playGame();
+    } else {
+        alert("Thank you for playing!");
+    }
 }
 
-const humanSelection = getHumanChoice();                                                                            // These constants call the functions to get both the humanChoice and
-const computerSelection = getComputerChoice();                                                                      // the computerChoice and store their values.
+playGame();
