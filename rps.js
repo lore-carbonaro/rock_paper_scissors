@@ -44,3 +44,16 @@ function getComputerChoice() {                                  // This function
         return "scissors";
     }
 }
+
+
+
+
+function getHumanChoice() {                                                                             // This function asks the user to type in on of the three available options and turns it in lowercase.
+    let choice = prompt("Please choose between rock, paper or scissors.").toLowerCase();                // If the user choice turned in lowercase equals either rock, paper or scissors, it's returned.
+    if (choice === "rock" || choice === "paper" || choice === "scissors") {                             // If the user inputs an invalid choice, an alert message is displayed and the function is called again.
+        return `${choice}`;
+    } else {
+        alert("Wrong input, please choose between rock, paper or scissors.")
+        return getHumanChoice();
+    }
+}
