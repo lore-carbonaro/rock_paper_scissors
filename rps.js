@@ -63,3 +63,25 @@ function getHumanChoice() {                                                     
 
 let humanScore = 0;                             // Declaring humanScore and computerScore variables to keep track of
 let computerScore = 0;                          // the players' scores
+
+
+
+
+function playRound(humanChoice, computerChoice) {                                                                   // This functions plays a single round of the game.
+    if (computerChoice === "rock" && humanChoice === "scissors" ||                                                  // It gathers both the humanChoice and computerChoice and compares them.
+        computerChoice === "scissors" && humanChoice === "paper" ||                                                 // It then declares which player wins and increments their score by 1.
+        computerChoice === "paper" && humanChoice === "rock") {                                                     // If the round results in a tie, the scores are not incremented.
+        computerScore++;
+        console.log("The computer wins, " + `${computerChoice}` + " beats " + `${humanChoice}` + "!");
+    } else if (humanChoice === "rock" && computerChoice === "scissors" ||
+        humanChoice === "scissors" && computerChoice === "paper" ||
+        humanChoice === "paper" && computerChoice === "rock") {
+        humanScore++;
+        console.log("You win, " + `${humanChoice}` + " beats " + `${computerChoice}` + "!");
+    } else {
+        console.log("It's a tie, " + `${humanChoice}` + " equals " + `${computerChoice}` + "!");
+    }
+}
+
+const humanSelection = getHumanChoice();                                                                            // These constants call the functions to get both the humanChoice and
+const computerSelection = getComputerChoice();                                                                      // the computerChoice and store their values.
