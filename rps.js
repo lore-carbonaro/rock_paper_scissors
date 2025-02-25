@@ -57,3 +57,9 @@ function getHumanChoice() {                                                     
         return getHumanChoice();
     }
 }
+
+
+
+
+let humanScore = 0;                             // Declaring humanScore and computerScore variables to keep track of
+let computerScore = 0;                          // the players' scores
