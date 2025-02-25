@@ -31,3 +31,16 @@ winner
 function until either the humanScore or the computerScore 
 reach 5 points
 */
+
+
+
+function getComputerChoice() {                                  // This function picks a random number between 0 and 1.
+    let randomNum = Math.random();                              // If the number is between 0 (inclusive) and 0.33 (inclusive), the funcion returns "rock".
+    if (randomNum >= 0 && randomNum <= 0.33) {                  // If the number is between 0.33 (exclusive) and 0.66 (inclusive), the funcion returns "paper".
+        return "rock";                                          // If the number is between 0.66 (exclusive) and 1 (inclusive), the funcion returns "scissors".
+    } else if (randomNum > 0.33 && randomNum <= 0.66) {
+        return "paper";
+    } else if (randomNum > 0.66 && randomNum <= 1) {
+        return "scissors";
+    }
+}
