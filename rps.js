@@ -8,8 +8,8 @@ The script evaluates the two inputs and declares which one
 wins over the other, or if the round results in a tie.
 The script will then increment the user score or 
 computer score by 1.
-When either the computer score or the user score reaches 5, 
-the game ends.
+When 5 rounds are played, the game ends and the player with
+the highest score wins.
 */
 
 /* 
@@ -28,8 +28,7 @@ the choices equal each other, the round ends in a tie.
 - Increment humanScore or computerScore by 1 based on the round
 winner
 - Create a function named playGame that loops the playRound
-function until either the humanScore or the computerScore 
-reach 5 points
+function for 5 rounds
 */
 
 
@@ -48,7 +47,7 @@ function getComputerChoice() {                                  // This function
 
 
 
-function getHumanChoice() {                                                                             // This function asks the user to type in on of the three available options and turns it in lowercase.
+function getHumanChoice() {                                                                             // This function asks the user to type in one of the three available options and turns it in lowercase.
     let choice = prompt("Please choose between rock, paper or scissors.").toLowerCase();                // If the user choice turned in lowercase equals either rock, paper or scissors, it's returned.
     if (choice === "rock" || choice === "paper" || choice === "scissors") {                             // If the user inputs an invalid choice, an alert message is displayed and the function is called again.
         return `${choice}`;
