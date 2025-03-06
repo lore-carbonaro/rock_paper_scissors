@@ -1,13 +1,8 @@
 // Computer random generated choice
 function getComputerChoice() {
-    let randomNum = Math.random();
-    if (randomNum >= 0 && randomNum <= 0.33) {
-        return "rock";
-    } else if (randomNum > 0.33 && randomNum <= 0.66) {
-        return "paper";
-    } else if (randomNum > 0.66 && randomNum <= 1) {
-        return "scissors";
-    }
+    let choices = ["rock", "paper", "scissors"];
+    let randomChoice = Math.floor(Math.random() * choices.length);
+    return choices[randomChoice];
 }
 
 
