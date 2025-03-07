@@ -1,94 +1,73 @@
-// Computer random generated choice
-function getComputerChoice() {
-    let choices = ["rock", "paper", "scissors"];
-    let randomChoice = Math.floor(Math.random() * choices.length);
-    return choices[randomChoice];
+const choices = ["rock", "paper", "scissors"];
+const playerDisplay = document.querySelector("#playerDisplay");
+const computerDisplay = document.querySelector("#computerDisplay");
+const resultDisplay = document.querySelector("#resultDisplay");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const playerScoreDisplay = document.querySelector("#playerScoreDisplay");
+const computerScoreDisplay = document.querySelector("#computerScoreDisplay");
+const container = document.querySelector("#container");
+let playerScore = 0;
+let computerScore = 0;
+
+
+if (playerScore === 5 || computerScore === 5) {
+    document.querySelector("#buttons").remove();
 }
 
+rock.addEventListener("click", () => {
+    playGame("rock");
+});
+
+paper.addEventListener("click", () => {
+    playGame("paper");
+});
+
+scissors.addEventListener("click", () => {
+    playGame("scissors");
+});
 
 
-// User choice prompt
-function getHumanChoice() {
-    let choice = prompt("Please choose between rock, paper or scissors.").toLowerCase();
-    if (choice === "rock" || choice === "paper" || choice === "scissors") {
-        return `${choice}`;
+
+function playGame(playerChoice) {
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
+    let result = "";
+
+    if (computerChoice === "rock" && playerChoice === "scissors" ||                                                  
+        computerChoice === "scissors" && playerChoice === "paper" ||                                                 
+        computerChoice === "paper" && playerChoice === "rock") {
+        result = "The computer wins!"
+        computerScore++;
+        computerScoreDisplay.textContent = computerScore;
+    } else if (playerChoice === "rock" && computerChoice === "scissors" ||
+        playerChoice === "scissors" && computerChoice === "paper" ||
+        playerChoice === "paper" && computerChoice === "rock") {
+        result = "The player wins!"
+        playerScore++;
+        playerScoreDisplay.textContent = playerScore;
     } else {
-        alert("Wrong input, please choose between rock, paper or scissors.")
-        return getHumanChoice();
+        result = "It's a tie!"
     }
-}
-
-
-
-
-// Play again prompt
-function playAgain() {
-    let replay = prompt("Do you want to play again?").toUpperCase();
-    if (replay === "Y") {
-    playGame();
-    } else if (replay === "N") {
-    alert("Thank you for playing!");
-    } else {
-    alert("Invalid choice, please type 'Y' if you wish to play again or 'N' if you wish to exit the game.");
-    playAgain();
-    }
-}
-
-
-
-
-// Game
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-    function playRound(humanChoice, computerChoice) {
-        if (computerChoice === "rock" && humanChoice === "scissors" ||                                                  
-            computerChoice === "scissors" && humanChoice === "paper" ||                                                 
-            computerChoice === "paper" && humanChoice === "rock") {                                                     
-            computerScore = computerScore + 1;
-            console.log("The computer wins, " + `${computerChoice}` + " beats " + `${humanChoice}` + "!");
-        } else if (humanChoice === "rock" && computerChoice === "scissors" ||
-            humanChoice === "scissors" && computerChoice === "paper" ||
-            humanChoice === "paper" && computerChoice === "rock") {
-            humanScore = humanScore + 1;
-            console.log("You win, " + `${humanChoice}` + " beats " + `${computerChoice}` + "!");
-        } else {
-            console.log("It's a tie, " + `${humanChoice}` + " equals " + `${computerChoice}` + "!");
-        }
-    };
-
-    // Initialize game
-    console.log("Round 1");
-    playRound(getHumanChoice(), getComputerChoice());
-    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
-
-    console.log("Round 2");
-    playRound(getHumanChoice(), getComputerChoice());
-    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
     
-    console.log("Round 3");
-    playRound(getHumanChoice(), getComputerChoice());
-    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+    playerDisplay.textContent = `PLAYER: ${playerChoice}`;
+    computerDisplay.textContent = `COMPUTER: ${computerChoice}`;
+    resultDisplay.textContent = result;
 
-    console.log("Round 4");
-    playRound(getHumanChoice(), getComputerChoice());
-    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+    if (playerScore === 5 || computerScore === 5) {
+        document.querySelector("#game").remove();
+        let winner = `Game over! The final score is: Player ${playerScore} | ${computerScore} Computer`;
 
-    console.log("Round 5");
-    playRound(getHumanChoice(), getComputerChoice());
-    console.log("Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
+        const finalScore = document.createElement("div");
+        const playAgain = document.createElement("button");
 
-    // Declare final score
-    if (humanScore > computerScore) {
-        console.log("You win the game!\nFinal Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
-    } else if (computerScore > humanScore) {
-        console.log("The computer wins the game!\nFinal Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
-    } else {
-        console.log("It's a tie!\nFinal Score: " + `${humanScore}` + " You" + " | " + "CPU " + `${computerScore}`);
-    };
-
-    // Play again function call
-    playAgain();
+        finalScore.textContent = winner;
+        container.appendChild(finalScore);
+        
+        playAgain.textContent = "Play again";
+        container.appendChild(playAgain);
+        playAgain.addEventListener("click", () => {
+            location.reload();
+        });
+    }
 }
-
-playGame();

@@ -5,7 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, paper, scissors game</title>
 </head>
-<body style="background-color: black;">
+<body style="background-color: grey;">
+    <div id="container">
+        <div id="game">
+            <div id="buttons">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button>
+            </div>
+
+            <div id="playerDisplay"></div>
+            <div id="computerDisplay"></div>
+            <div id="resultDisplay"></div>
+
+            <div class="scoreDisplay">Player Score:
+                <span id="playerScoreDisplay">0</span>
+            </div>
+        
+            <div class="scoreDisplay">Computer Score:
+                <span id="computerScoreDisplay">0</span>
+            </div>
+        </div>
+    </div>
     <script src="rps.js"></script>
 </body>
 </html>
