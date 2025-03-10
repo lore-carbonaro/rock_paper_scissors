@@ -1,0 +1,53 @@
+body {
+    font-family: Roboto, sans-serif;
+    font-size: 50px;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(49, 49, 49);
+}
+
+h1 {
+    font-size: 70px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+#game {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+#buttons > * {
+    display: flex;
+    font-size: 70px;
+    background-color: blueviolet;
+    border-style: hidden;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+#rock:hover,
+#paper:hover,
+#scissors:hover {
+    background-color: rgb(42, 166, 224);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+}
+
+#rock:active,
+#paper:active,
+#scissors:active {
+    background-color: rgb(22, 86, 116);
+    transform: translateY(4px);
+}
