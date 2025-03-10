@@ -62,9 +62,11 @@ function playGame(playerChoice) {
         const playAgain = document.createElement("button");
 
         finalScore.textContent = winner;
+        finalScore.setAttribute("style", "text-align: center;")
         container.appendChild(finalScore);
         
         playAgain.textContent = "Play again";
+        playAgain.setAttribute("style", "display: flex; justify-self: center;")
         container.appendChild(playAgain);
         playAgain.addEventListener("click", () => {
             location.reload();

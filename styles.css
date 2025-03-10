@@ -9,6 +9,10 @@ body {
     background-color: rgb(49, 49, 49);
 }
 
+#container {
+    display: grid;
+}
+
 h1 {
     font-size: 70px;
     text-align: center;
@@ -50,4 +54,12 @@ h1 {
 #scissors:active {
     background-color: rgb(22, 86, 116);
     transform: translateY(4px);
+}
+
+#display {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 300px;
 }
